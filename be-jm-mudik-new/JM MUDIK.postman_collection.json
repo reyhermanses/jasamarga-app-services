@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "ad25fb69-b269-49f4-b547-6087ac7749e6",
+		"name": "JM MUDIK",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24894358"
+	},
+	"item": [
+		{
+			"name": "Master",
+			"item": [
+				{
+					"name": "Company",
+					"item": [
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/master/company",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"master",
+										"company"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Wilayah",
+					"item": [
+						{
+							"name": "GetAll Provinsi",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/master/wilayah/provinsi",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"master",
+										"wilayah",
+										"provinsi"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll Kabupaten",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/master/wilayah/kabupaten?provinsi_id=21",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"master",
+										"wilayah",
+										"kabupaten"
+									],
+									"query": [
+										{
+											"key": "provinsi_id",
+											"value": "21"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll Kecamatan",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/master/wilayah/kecamatan?kabupaten_id=7171",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"master",
+										"wilayah",
+										"kecamatan"
+									],
+									"query": [
+										{
+											"key": "kabupaten_id",
+											"value": "7171"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Unit Kerja",
+					"item": [
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL}}/master/company",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"master",
+										"company"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tanggal Mudik",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Master Rute",
+					"item": [
+						{
+							"name": "Create Kota Tujuan Akhir",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"route\" : \"SELATAN\",\r\n    \"parent_id\" : 1,\r\n    \"kabupaten_id\" : 7110,\r\n    \"is_show\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/master/rute",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"master",
+										"rute"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Master Child Rute",
+					"item": [
+						{
+							"name": "Create Kota Tujuan",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rute_id\" : 1,\r\n    \"kecamatan_id\" : 7108010,\r\n    \"is_show\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/master/rute",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"master",
+										"rute"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAll",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "PIC",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"company_name\" : \"PT Jasamarga Bali Tol\",\r\n    \"unit_kerja_name\" : \"test\",\r\n    \"kd_comp\": \"PJBT\",\r\n    \"muatan\" : 150,\r\n    \"priority\" : \"2\",\r\n    \"active\" : true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/pic/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"pic",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"company_name\" : \"PT Jasamarga Bali Tol\",\r\n    \"unit_kerja_name\" : \"test\",\r\n    \"kd_comp\": \"PJBT\",\r\n    \"muatan\" : 150,\r\n    \"priority\" : \"2\",\r\n    \"active\" : true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/pic/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"pic",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"company_name\" : \"PT Jasamarga Bali Tol\",\r\n    \"unit_kerja_name\" : \"test\",\r\n    \"kd_comp\": \"PJBT\",\r\n    \"muatan\" : 150,\r\n    \"priority\" : \"2\",\r\n    \"active\" : true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/pic/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"pic",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rute",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"jalur\" : \"test\",\r\n    \"parent_id\": 1,\r\n    \"kabupaten_id\" : 7109,\r\n    \"is_show\" : true,\r\n    \"created_by\" : \"yy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/rute",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"rute"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Registration",
+			"item": []
+		}
+	]
+}

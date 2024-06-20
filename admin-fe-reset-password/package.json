@@ -1,0 +1,46 @@
+{
+  "name": "agg-fe-management-user-auth",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "next start",
+    "dev": "next dev",
+    "build": "next build",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@mantine/core": "^7.5.1",
+    "@mantine/dates": "^7.5.1",
+    "@mantine/form": "^7.2.2",
+    "@mantine/hooks": "^7.5.1",
+    "@mantine/modals": "^7.5.1",
+    "@mantine/notifications": "^7.5.1",
+    "@reduxjs/toolkit": "^2.0.1",
+    "@tabler/icons-react": "^2.47.0",
+    "@tanstack/react-query": "^5.18.1",
+    "@types/jsonwebtoken": "^9.0.5",
+    "axios": "^1.6.2",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.10",
+    "jsonwebtoken": "^9.0.2",
+    "mantine-react-table": "^2.0.0-alpha.15",
+    "next": "14.0.3",
+    "next-auth": "^4.24.5",
+    "next-secure-headers": "^2.2.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-redux": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.3",
+    "postcss": "^8.4.33",
+    "postcss-preset-mantine": "^1.13.0",
+    "postcss-simple-vars": "^7.0.1",
+    "typescript": "^5"
+  }
+}

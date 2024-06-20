@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Poppins:wght@300&display=swap');
+
+.content {
+  max-width: 80rem;
+  width: 90%;
+  height: 525px;
+  background: #EDF2F4;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 15px; /* Add the desired border radius value */
+  animation: fade-in 1s ease both;
+  margin: 0 auto;
+}
+
+.left {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center on the y-axis */
+  justify-content: center; /* Center on the x-axis */
+  background-image: radial-gradient(ellipse at top left, #F7971E, #FFD200);
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 60%;
+  height: 80%;
+}
+
+.form__input {
+  width: 100%;
+  height: 45px;
+}
+
+.button {
+  width: 100%;
+}
+
+.button:hover {
+  background: green;
+}
+
+.right {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  background-image: url('/public/kantor.jpg'); /* Add your background image URL */
+  background-size:cover; /* Resize the image to fit within the container */
+  background-position: center;
+  background-repeat: no-repeat;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  flex-direction: column;
+  align-items: center; /* Center on the y-axis */
+  justify-content: center; /* Center on the x-axis */
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 250px;
+  background-image: url('/public/jsmr.png'); /* Add your background image URL */
+  background-size:contain; /* Resize the image to fit within the container */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 100px;
+  align-items: center; /* Center on the y-axis */
+  justify-content: center; /* Center on the x-axis */
+}
+
+.title h3 {
+  font-size: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color: #FFD200;
+  margin: auto;
+}
+
+h5 {
+  color: #F7971E;
+}
+
+p {
+  font-size: 10px;
+  color: #F7971E;
+}
+
+.modalFailed {
+  width: fit-content;
+  height: fit-content; /* Add this line for vertical centering */
+  position: absolute; /* Change to absolute positioning */
+  top: 10%; /* Move the top to the middle of the screen */
+  left: 50%; /* Move the left to the middle of the screen */
+  transform: translate(-50%, -50%); /* Use a transform to center it */
+}
+
+.modal-body {
+  color: red;
+  font-size: 15px;
+  text-align: center;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; /* Start with opacity 0 to make it invisible */
+  }
+  100% {
+    opacity: 1; /* Gradually increase opacity to 1 to fade in */
+  }
+}
+
+@media (max-width: 768px) {
+  /* Apply styles when screen width is 768px or less */
+  .right {
+    display: none; /* or any other value you want when the screen width is 768px or less */
+  }
+
+  .left {
+    width: 100%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+
+  .content {
+    height: 220px;
+  }
+}

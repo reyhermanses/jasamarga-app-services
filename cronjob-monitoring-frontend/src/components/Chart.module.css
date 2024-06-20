@@ -1,0 +1,6 @@
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 100%; /* Set the maximum width to prevent overflow */
+  height: 100%; /* You can set an initial height if needed */
+}

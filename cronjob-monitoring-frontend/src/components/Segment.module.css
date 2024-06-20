@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+.container {
+  width: 100%;
+  height: fit-content;
+  margin-top: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+}
+
+.failed-cronjob {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100px;
+  border: 2px solid red;
+  border-radius: 25px;
+  align-self: center;
+  justify-content: center; /* Center on the x-axis */
+}
+
+.failed-cronjob h1 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.title {
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: black;
+  align-self: center;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Cover the full width of the container */
+  height: 100%; /* Cover the full height of the container */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background color */
+  /* Additional styles for the backdrop if needed */
+  z-index: 1;
+}
+
+.loading-circle {
+  border: 6px solid #f3f3f3; /* Light gray border */
+  border-top: 6px solid #3498db; /* Blue border (change to your preferred color) */
+  border-radius: 50%;
+  width: 50px;
+  position: absolute; /* Change to absolute positioning */
+  height: 50px;
+  animation: spin 0.5s linear infinite; /* Use the 'spin' animation for rotation */
+  top: 50%; /* Move the top to the middle of the screen */
+  left: 50%; /* Move the left to the middle of the screen */
+  transform: translate(-50%, -50%); /* Use a transform to center it */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

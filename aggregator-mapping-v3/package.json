@@ -1,0 +1,64 @@
+{
+  "name": "aggregator-mapping",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon --max-old-space-size=8096 ./bin/www",
+    "uji": "mocha --timeout 200000 --exit",
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run migrate",
+    "pretest": "cross-env NODE_ENV=test npm run migrate:reset"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "public"
+    ]
+  },
+  "dependencies": {
+    "axios": "^1.2.2",
+    "bcrypt": "^5.1.0",
+    "connect-timeout": "^1.9.0",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.7.0",
+    "exceljs": "^4.3.0",
+    "express": "^4.18.2",
+    "express-router-group": "^0.1.4",
+    "express-validator": "^6.14.2",
+    "fs": "^0.0.1-security",
+    "http-errors": "~1.6.3",
+    "jade": "^1.9.2",
+    "jsonwebtoken": "^8.5.1",
+    "ldap-authentication": "^2.3.2",
+    "ldapjs": "^2.3.3",
+    "minio": "^7.0.32",
+    "moment": "^2.29.4",
+    "moment-precise-range-plugin": "^1.3.0",
+    "moment-with-locales-es6": "^1.0.1",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.2",
+    "nodemon": "^2.0.20",
+    "oracledb": "^5.5.0",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "prettier": "^2.5.1",
+    "redis": "^3.0.2",
+    "sequelize": "^6.25.5",
+    "ssl-root-cas": "^1.3.1",
+    "xlsx": "^0.18.5",
+    "xlsx-color": "^0.14.30",
+    "xlsx-populate": "^1.21.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "cross-env": "^7.0.3",
+    "mocha": "^10.2.0",
+    "sequelize-cli": "^6.5.2",
+    "supertest": "^6.3.3"
+  }
+}

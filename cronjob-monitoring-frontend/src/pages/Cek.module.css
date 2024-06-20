@@ -1,0 +1,75 @@
+.container {
+  max-width: 80rem;
+  width: 80%;
+  height: fit-content;
+  background: #EDF2F4;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.content {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+}
+
+.table-container {
+  width: 80%;
+}
+
+.table-container table {
+  background: #fff; /* Your desired background color */
+}
+
+h1 {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+.org-dropdown {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  max-width: 100%;
+}
+
+.spinner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+}
+
+.danger {
+  color: red;
+  font-size: 15px;
+}
+
+@media (min-width: 768px) {
+  .spinner {
+    align-items: center; /* Center on the y-axis */
+    justify-content: center; /* Center on the x-axis */
+  }
+
+  .content {
+    width: 1000px;
+  }
+
+  .table-container {
+    width: 100%;
+  }
+}

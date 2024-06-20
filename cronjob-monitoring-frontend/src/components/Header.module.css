@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+/* Style the navigation menu */
+nav {
+  background-image: radial-gradient(ellipse at top left, #F7971E, #FFD200);
+  color: black;
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  height: 55px;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Center vertically */
+  gap: 20px;
+  animation: slideDown 1s ease;
+  list-style-type: none;
+}
+
+.logo {
+  max-width: 150px; /* Adjust the max-width as needed */
+  margin-left: 20px; /* Add spacing between logo and content */
+  margin-right: 50px; /* Add spacing between logo and content */
+}
+
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Center vertically */
+}
+
+.dropdown {
+  text-decoration: none;
+}
+
+.item {
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: black;
+  text-decoration: none;
+}
+
+.setting {
+  margin-left: auto;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: black;
+}
+
+.logout {
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: black;
+  margin-right: 20px;
+  border: none;
+  background: none;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+.mobile-menu:hover,
+.mobile-menu:active {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.item:hover,
+.item:active,
+.logout:hover,
+.logout:active {
+  color: #e63946;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.setting:hover,
+.setting:active {
+  color: #023047;
+  cursor: pointer;
+  transition: 0.3s;
+  animation: spin 2s linear infinite;
+}
+
+.dropdown:hover {
+  cursor: pointer;
+}
+
+.menu li {
+  padding: 15px;
+}
+
+.menu a {
+  text-decoration: none;
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: black;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: #e63946;
+}
+
+.mobile-menu a {
+  color: black;
+}
+
+.menu .activated {
+  text-decoration: none;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: #e63946;
+  text-decoration: none;
+}
+
+/* Style the dropdown menu */
+.dropdown {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  list-style-type: none;
+  padding: 0;
+  margin-top: 15px;
+  width: 100%;
+  border: 2px solid #F7971E;
+}
+
+.dropdown:hover .submenu {
+  display: block;
+}
+
+.submenu li {
+  padding: 10px;
+  text-align: center;
+}
+
+.submenu a {
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: black;
+  text-decoration: none;
+}
+
+.submenu__item {
+  font-size: 10px;
+}
+
+.submenu__item:hover {
+  background-image: radial-gradient(ellipse at top left, #F7971E, #FFD200);
+}
+
+.submenu a::after {
+  content: ''; /* Remove the arrow */
+  margin-left: 0; /* Remove any margin */
+}
+
+@keyframes slideDown {
+  0% {
+    top: -200px; /* Start off-screen */
+  }
+  100% {
+    top: 0; /* Slide down to the top of the page */
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Apply styles when screen width is 768px or less */
+  .mobile-menu {
+    display: block; /* or any other value you want when the screen width is 768px or less */
+    margin-left: 20px; /* Add spacing between logo and content */
+  }
+
+  .menu {
+    display: none;
+  }
+}

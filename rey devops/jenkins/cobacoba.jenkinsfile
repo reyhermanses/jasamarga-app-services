@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                // Checkout the code from Git
+                // git 'https://github.com/reyhermanses/idr.center.git'
+
+                withCredentials([usernamePassword(credentialsId: '2a5de235-b756-4534-b8c6-37ed7bd3966b', usernameVariable: 'git_credentials', passwordVariable: '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')]) {
+          // Checkout code from Git with credentials
+                    git branch: 'main', // Replace with desired branch name
+                    credentialsId: 'GIT_CREDENTIALS',
+                    url: 'https://github.com/reyhermanses/idr.center.git'
+                }
+
+                // Install dependencies and build the app
+                sh 'npm install'
+                sh 'npm run build'
+
+                // Build Docker image
+                sh 'docker build -t cobacoba .'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Placeholder step, replace with actual deployment steps
+                echo 'Deploying the app...'
+                // Add your deployment steps here
+            }
+        }
+    }
+}

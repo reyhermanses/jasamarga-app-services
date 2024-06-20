@@ -1,0 +1,105 @@
+def jfrogurl = "jfrogartifactory.jasamarga.co.id"
+def repo = "aggregator-postgres-v3"
+def appName = "aggregator-postgres-v3"
+def repoOwner = "reyhermanses"
+
+pipeline {
+    agent {
+        node {
+            label "Agent Server 160"
+        }
+    }
+    stages {
+        stage('Pull From Artifact') {
+            steps {
+                script {
+                    // discordSend description: "Job Started", footer: "Election Production 160", link: env.BUILD_URL, result: currentBuild.currentResult, title: "Election Build ID ${env.BUILD_ID}", webhookURL: DISCORD_URL
+                    withCredentials([usernamePassword(credentialsId: 'a9fcffd5-f80b-41b2-b1f1-7f946260056a', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                        def dockerHubCredentials = "-u ${env.DOCKER_USERNAME} -p ${env.DOCKER_PASSWORD}"
+                        
+                        sh "docker login ${dockerHubCredentials}"
+                        // sh "docker pull ${env.DOCKER_USERNAME}/${repo}/${appName}:${params.tags}"
+                        sh "docker pull ${env.DOCKER_USERNAME}/be-election:${params.tags}"
+                    }
+                }
+            }
+        }
+        stage('Build Image') {
+            steps {
+                script {
+                    script {
+                        // Cleaning Current Docker COntainer
+                        sh """
+                            docker stop be-election-1 || true;
+                            docker stop be-election-2 || true;
+                            docker stop be-election-3 || true;
+                            docker rm be-election-1 || true;
+                            docker rm be-election-2 || true;
+                            docker rm be-election-3 || true;
+                        """
+
+                        // sh 'cp /var/www/html/be-election/.env .'
+                        sh 'cp /var/www/html/be-election/.env .'
+
+                        def envVars = readFile('.env').readLines().findAll { line -> line.trim() && !line.trim().startsWith('#') }
+
+                        // Running Cluster
+                        def cluster1 = [
+                            'docker', 'run', '-d',
+                            '-p', '9002:8081',
+                            *envVars.collect { "-e '${it.split('=')[0]}'='${it.split('=')[1]}'" }.flatten(),
+                            '--name be-election-1',
+                            "${repoOwner}/be-election:${params.tags}"
+                        ]
+                        
+                        def cluster2 = [
+                            'docker', 'run', '-d',
+                            '-p', '9003:8081',
+                            *envVars.collect { "-e '${it.split('=')[0]}'='${it.split('=')[1]}'" }.flatten(),
+                            '--name be-election-2',
+                            "${repoOwner}/be-election:${params.tags}"
+                        ]
+                        
+                        def cluster3 = [
+                            'docker', 'run', '-d',
+                            '-p', '9004:8081',
+                            *envVars.collect { "-e '${it.split('=')[0]}'='${it.split('=')[1]}'" }.flatten(),
+                            '--name be-election-3',
+                            "${repoOwner}/be-election:${params.tags}"
+                        ]
+                        
+                        // def cluster4 = [
+                        //     'docker', 'run', '-d',
+                        //     '-p', '9005:8081',
+                        //     *envVars.collect { "-e '${it.split('=')[0]}'='${it.split('=')[1]}'" }.flatten(),
+                        //     '--name be-election-4',
+                        //     "${repoOwner}/be-election:${params.tags}"
+                        // ]
+
+                        sh cluster1.join(' ')
+                        sh cluster2.join(' ')
+                        sh cluster3.join(' ')
+                        // sh cluster4.join(' ')
+                    }
+                }
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Jenkins pipeline executed successfully!'
+        }
+    }
+    // post {
+    //     success {
+    //         script {
+    //             discordSend description: "Job Run Successfully", footer: "Aggregator Production 238", link: env.BUILD_URL, result: currentBuild.currentResult, title: "Aggregator Build ID ${env.BUILD_ID}", webhookURL: DISCORD_URL
+    //         }
+    //     }
+    //     failure {
+    //         script {
+    //             discordSend description: "Job Failed", footer: "Aggregator Production 238", link: env.BUILD_URL, result: currentBuild.currentResult, title: "Aggregator Build ID ${env.BUILD_ID}", webhookURL: DISCORD_URL
+    //         }
+    //     }
+    // }
+}
